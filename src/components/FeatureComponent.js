@@ -1,5 +1,10 @@
 import React from 'react'
 
+/**
+ * 
+ * @param {Object} props, destructured object containing the props of the component 
+ * @return {JSX} JSX code of the component, this component is used to display the feature section of the home page.
+ */
 const FeatureComponent = ({ img, alt, title, description }) => {
     return (
         <div className="feature-item">

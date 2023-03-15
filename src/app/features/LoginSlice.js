@@ -20,7 +20,19 @@ const loginSlice = createSlice({
     initialState,
     reducers: {
 
-        setStateToNull: (state => state = initialState),
+        setStateToNull: (state) => {
+            state.token = null;
+            state.isLoggingIn = false;
+            state.isLoading = false;
+            state.isAuth = false;
+            state.error = null;
+            state.firstname = '';
+            state.lastname = '';
+            state.email = '';
+            state.password = '';
+            state.rememberMe = false;
+            state.editName = false;
+        },
 
         loginPending: (state) => {
             state.isLoading = true
@@ -69,14 +81,13 @@ const loginSlice = createSlice({
 
         setEditName: (state, action) => {
             state.editName = action.payload;
-            console.log(state.editName)
         }
     },
 });
 
-// Extract the actions and reducer from the slice
+// destructuring the actions and reducer from the slice to export them
 const { actions, reducer } = loginSlice;
 
-// Export the actions and reducer for use in the app
+// exporting the actions to be used in the components and the reducer to be used in the store
 export const { setStateToNull, loginPending, loginSuccess, loginFailed, logOut, setToken, setIsLoggingIn, setError, setFirstname, setLastname, setEmail, setPassword, setRememberMe, setEditName } = actions;
 export default reducer;

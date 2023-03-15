@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { putUserInfo } from '../api/userApi';
 import { setEditName, setFirstname, setLastname } from '../app/features/LoginSlice';
 
-const PopupWelcome = ({ changenamebtn }) => {
-    const form = document.getElementsByClassName("form-popup")[0];
+/**
+ * @returns {JSX} JSX code of the component, this component is used to display the popup to change the name of the user.
+ */
+const PopupWelcome = () => {
     const firstName = useSelector((state) => state.login.firstname)
     const lastName = useSelector((state) => state.login.lastname)
     const editNameBtn = useSelector((state) => state.login.editName)
-
-
     const dispatch = useDispatch();
 
+    /**
+     * Handle the submit of the form to change the name, and dispatch the action to change the name in the store.
+     * @param {Event} e 
+     */
     const handleSubmitName = async (e) => {
         try {
             e.preventDefault();
@@ -29,16 +33,11 @@ const PopupWelcome = ({ changenamebtn }) => {
         } catch (error) {
             console.log(error)
         }
-
-        // console.log(firstNameFromLocalStrg)
     }
 
 
     const handleCancelName = (e) => {
         e.preventDefault();
-        let form = e.target.parentNode.parentNode;
-
-        console.log(editNameBtn)
         dispatch(setEditName(!editNameBtn))
     }
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import LoginFormComponent from '../components/LoginFormComponent'
 import Footer from '../layouts/Footer'
-import HeaderHome from '../layouts/HeaderHome'
+import HeaderGlobal from '../layouts/HeaderGlobal'
 
 const LoginView = () => {
     return (
         <>
-            <HeaderHome />
+            <HeaderGlobal func={null} pathBtn={"/login"} textBtn={"Sign In"} />
             <main className="main bg-dark">
                 <LoginFormComponent />
             </main>

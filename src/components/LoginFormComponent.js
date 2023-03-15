@@ -4,6 +4,10 @@ import { loginPending, loginSuccess, loginFailed, setToken, setPassword, setEmai
 import { useNavigate } from 'react-router-dom';
 import { fetchUser, userLogin } from '../api/userApi.js';
 
+/**
+ * @function LoginFormComponent
+ * @returns {JSX} JSX code of the component, this component is used to display the login form and handle the login process.
+ */
 const LoginFormComponent = () => {
 
     const email = useSelector((state) => state.login.email);
@@ -13,13 +17,20 @@ const LoginFormComponent = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch();
 
+    /**
+     * @function handleSubmit - handles the login process by dispatching the loginPending action, 
+     * then calling the userLogin function from the userApi.js file, 
+     * then dispatching the loginSuccess action, 
+     * then dispatching the setToken action, 
+     * then navigating to the profile page.
+     * @param {Object} e, event object 
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(loginPending());
-
         try {
-            const isAuth = await userLogin({ email, password })
-            const userInfos = await fetchUser();
+            const isAuth = await userLogin({ email, password });
+            const userInfos = await fetchUser(); // fetch user infos to get the firstname and lastname on the profile page
             console.log(userInfos);
             dispatch(loginSuccess());
             dispatch(setToken(isAuth.body.token));
@@ -31,7 +42,7 @@ const LoginFormComponent = () => {
 
     const toggleRememberMe = () => {
         dispatch(setRememberMe(!rememberMe));
-        localStorage.setItem('rememberMe', !rememberMe)
+        localStorage.setItem('rememberMe', !rememberMe);
     }
 
     return (

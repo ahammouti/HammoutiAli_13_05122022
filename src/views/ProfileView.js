@@ -37,9 +37,8 @@ export const ProfileView = () => {
             dispatch(setLastname(lastNameFromLocalStrg));
             dispatch(setRememberMe(true));
         }
-        if (!token && !rememberMeFromLocalStrg) return logOut();
+        if (!token && !rememberMeFromLocalStrg) return logOut(); // if token is null and rememberMe is false, log out user and redirect to login page
     }, [rememberMe, token, dispatch, navigate]);
-
 
     const handleLogOut = () => {
         dispatch(setStateToNull());
@@ -50,12 +49,11 @@ export const ProfileView = () => {
     const handleChangeName = (e) => {
         e.preventDefault();
         dispatch(setEditName(!editNameBtn));
-        console.log(editNameBtn);
     }
 
     return (
         <div>
-            <HeaderGlobal onClickFunc={handleLogOut} pathBtn={"/"} textBtn={"Sign Out"} />
+            <HeaderGlobal onClickFunc={handleLogOut} pathBtn={"/"} textBtn={`${firstName} ${lastName} | Sign Out`} />
             <main className="main bg-dark">
                 <div className="header">
                     <h1>Welcome back<br />

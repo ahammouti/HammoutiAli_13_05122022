@@ -4,6 +4,11 @@ const baseUrl = "http://localhost:3001/api/v1/"
 const loginUrl = baseUrl + "user/login";
 const userProfileUrl = baseUrl + "user/profile";
 
+/**
+ * async function using axios and post method to manage the authentication of the user
+ * @param {Object} dataForm {email: " ", password: " ", rememberMe: true}
+ * @returns 
+ */
 export const userLogin = (dataForm) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -20,6 +25,12 @@ export const userLogin = (dataForm) => {
     })
 }
 
+
+/**
+ * async function using axios and post method to manage the fetching of the user's profile
+ * no 
+ * @returns
+ */
 export const fetchUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -42,6 +53,12 @@ export const fetchUser = () => {
     })
 }
 
+
+/**
+ * async function using axios and put method to manage the updating of the user's profile
+ * @param {Object} dataForm {firstName: "John", lastName: "Doe"}
+ * @returns  {Promise}  {status: 200, body: {firstName: "John", lastName: "Doe"}}
+ */
 export const putUserInfo = (dataForm) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -53,11 +70,11 @@ export const putUserInfo = (dataForm) => {
                     Authorization: `Bearer ${token}`
                 },
             });
-            console.log(dataForm)
+            console.log("dataForm put : ", dataForm)
             localStorage.setItem('firstName', response.data.body.firstName);
             localStorage.setItem('lastName', response.data.body.lastName)
             resolve(response.data);
-            console.log(response)
+            console.log("put : ", response)
         } catch (error) {
             reject(error);
         }
