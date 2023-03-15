@@ -1,4 +1,4 @@
-# BACKEND
+# LAUNCH BACKEND
 # Argent Bank API
 
 This codebase contains the code needed to run the backend for Argent Bank.
@@ -72,7 +72,7 @@ For some of the dynamic features, like toggling user editing, there is a mock-up
 
 And for the API model that you will be proposing for transactitons, the wireframe can be found in `/designs/wireframes/transactions.png`.
 
-# FRONTEND
+# LAUNCH FRONTEND
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
